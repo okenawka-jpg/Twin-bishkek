@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Bishkek · для менторов</title>
+<meta name="description" content="Всё о проекте Twin Bishkek на одной странице: демо, код, презентация, устройство модели, данные и ограничения.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&family=Martian+Mono:wght@400;500&family=Unbounded:wght@400..800&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<script>try { var t = localStorage.getItem('tb-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<style>
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-ui); font-size: 16px; line-height: 1.55; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+  .over { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin: 0; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 6vw, 56px); line-height: 1.05; letter-spacing: -.03em; margin: 10px 0 14px; }
+  h2 { font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em; margin: 44px 0 14px; }
+  .lead { font-size: 19px; color: var(--text-muted); max-width: 720px; margin: 0; }
+  a { color: var(--accent); }
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 28px; }
+  .link { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--text); box-shadow: var(--shadow-1); }
+  .link:hover { border-color: var(--accent); }
+  .link b { font-size: 17px; }
+  .link span { font-size: 13.5px; color: var(--text-muted); }
+  .link--main { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .link--main span { color: var(--on-accent); opacity: .85; }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .flow span { padding: 8px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); font-weight: 500; font-size: 15px; }
+  .flow i { color: var(--accent); font-style: normal; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); background: var(--sunken); }
+  tr:last-child td { border-bottom: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+  .stat { padding: 16px 18px; border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); }
+  .stat b { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 600; letter-spacing: -.02em; }
+  .stat span { font-size: 13.5px; color: var(--text-muted); }
+  ul { padding-left: 20px; margin: 0; } li { margin-bottom: 6px; }
+  pre { margin: 0; padding: 14px 16px; border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); font-family: var(--font-mono); font-size: 13px; line-height: 1.7; overflow-x: auto; white-space: pre; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .note { font-size: 14px; color: var(--text-muted); }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .tag--real { background: var(--better-soft); color: var(--better); }
+  .tag--demo { background: var(--worse-soft); color: var(--worse); }
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="over">Twin Bishkek · страница для менторов</p>
+  <h1>Горы видно?</h1>
+  <p class="lead">Цифровой двойник Бишкека: меняешь городское решение — автопарк, стройку, новую дорогу, посадку деревьев — и сразу видишь, что станет с пробками, воздухом и комфортом района.</p>
+
+  <div class="links">
+    <a class="link link--main" href="./#/sim"><b>Открыть демо →</b><span>симулятор с картой 2GIS</span></a>
+    <a class="link" href="https://github.com/okenawka-jpg/Twin-bishkek" target="_blank" rel="noopener"><b>Код на GitHub</b><span>Python + JS, тесты, данные</span></a>
+    <a class="link" href="https://claude.ai/artifact/2KwKqiosoe73CHcUqBYnqK" target="_blank" rel="noopener"><b>Презентация</b><span>13 слайдов, 7 минут</span></a>
+    <a class="link" href="./docs" target="_blank" rel="noopener"><b>API (Swagger)</b><span>/simulate, /plan, /live</span></a>
+  </div>
+  <p class="note">Бесплатный хостинг: если сайт долго не открывали, первая загрузка занимает около минуты.</p>
+
+  <h2>Как устроено</h2>
+  <div class="flow"><span>Решение</span><i>→</i><span>Трафик (BPR, 919 участков улиц)</span><i>→</i><span>PM2.5 по 473 сотам</span><i>→</i><span>AQI (EPA)</span><i>→</i><span>Комфорт района</span></div>
+  <p>Одна и та же модель написана дважды: на <b>Python</b> (сервер FastAPI) и на <b>JavaScript</b> (сайт работает и без сервера). Результаты совпадают до 10⁻¹³. Поверх модели — текстовый «Разбор от модели»: объясняет причины и предлагает исправления, каждое сначала прогоняя через модель.</p>
+
+  <h2>Что можно проверить в демо</h2>
+  <table>
+    <tr><th style="width:34%">Сценарий</th><th>Что увидеть</th></tr>
+    <tr><td>Зима, «Сутки по часам»</td><td>Пик пробок в 18:00, пик смога в 22:00: зимний смог — в первую очередь отопление, а не машины</td></tr>
+    <tr><td>UC-06 «Стройка трёх ЖК в Джале»</td><td>Переключатель «Во время стройки / После окончания»: техника и пыль, потом перегрузка школ</td></tr>
+    <tr><td>«Новая дорога» словами</td><td>«тоннель от Джала до Учкуна через центр» — тоннель, эстакада или обычная; стройка и эффект после</td></tr>
+    <tr><td>«Деревья»</td><td>«2000 платанов вдоль Чуя», ползунок лет: тень, CO₂, прохлада; утренние заторы от водовозов</td></tr>
+    <tr><td>Карта 2GIS</td><td>Слева живые пробки 2GIS, справа наш сценарий на той же карте</td></tr>
+    <tr><td><a href="./?selftest#/sim">?selftest</a></td><td>16 самопроверок модели прямо в браузере</td></tr>
+  </table>
+
+  <h2>Что настоящее, а что допущение</h2>
+  <table>
+    <tr><th style="width:34%">Часть</th><th>Источник</th></tr>
+    <tr><td>Город: улицы, реки, районы</td><td><span class="tag tag--real">данные</span> OpenStreetMap, 919 участков улиц с числом полос</td></tr>
+    <tr><td>Уровни воздуха</td><td><span class="tag tag--real">данные</span> калибровка по 93 датчикам OpenAQ: лето PM2.5 ≈ 14, зима ≈ 70 мкг/м³</td></tr>
+    <tr><td>Нормы парковок</td><td><span class="tag tag--real">данные</span> СН КР 30-01:2020, приложение З</td></tr>
+    <tr><td>Польза деревьев</td><td><span class="tag tag--real">данные</span> Nowak 2013 (PM2.5, CO₂ на м² кроны), WRI (охлаждение)</td></tr>
+    <tr><td>Живые пробки</td><td><span class="tag tag--real">данные</span> индекс 2GIS MapGL — для сверки суточного ритма</td></tr>
+    <tr><td>Загрузка улиц, суточный ритм трафика</td><td><span class="tag tag--demo">допущение</span> открытых данных по улицам нет</td></tr>
+    <tr><td>Население районов, доля EV 5%, силы эффектов</td><td><span class="tag tag--demo">допущение</span> подписано в интерфейсе</td></tr>
+    <tr><td>Новые дороги, рост крон пород</td><td><span class="tag tag--demo">допущение</span> упрощённые схемы, описаны в README_BACKEND.md</td></tr>
+  </table>
+
+  <h2>Проверка</h2>
+  <div class="stats">
+    <div class="stat"><b class="num">82</b><span>автотеста pytest: инварианты модели, дороги, деревья, API</span></div>
+    <div class="stat"><b class="num">16/16</b><span>самопроверок в браузере</span></div>
+    <div class="stat"><b class="num">10⁻¹³</b><span>расхождение JS и Python</span></div>
+    <div class="stat"><b class="num">~16 мс</b><span>расчёт одного сценария</span></div>
+  </div>
+
+  <h2>Запустить у себя</h2>
+  <div class="cols">
+    <pre>git clone https://github.com/okenawka-jpg/Twin-bishkek
+cd Twin-bishkek
+python -m venv venv
+venv\Scripts\activate
+pip install -e ".[api,dev]"
+pytest
+uvicorn twin_bishkek.api:app --port 8000</pre>
+    <div>
+      <p style="margin-top:0">Сайт откроется на <b>localhost:8000</b>, Swagger — на <b>/docs</b>.</p>
+      <p>Карта 2GIS: перед запуском задать ключ <code>TWINGIS_MAPGL_KEY</code>. Без сервера сайт можно открыть двойным кликом по <code>site/index.html</code> — посчитает встроенная JS-модель.</p>
+      <p>Подробно: <a href="https://github.com/okenawka-jpg/Twin-bishkek/blob/main/README_BACKEND.md" target="_blank" rel="noopener">README_BACKEND.md</a> · <a href="https://github.com/okenawka-jpg/Twin-bishkek/tree/main/docs" target="_blank" rel="noopener">источники и ограничения</a></p>
+    </div>
+  </div>
+
+  <h2>Над чем хотим совета</h2>
+  <ul>
+    <li>Где взять реальные данные о загрузке улиц Бишкека (мэрия, 2GIS Pro)?</li>
+    <li>Как честнее показать неопределённость допущений на защите?</li>
+    <li>Что важнее развивать дальше: транспортную модель или данные по районам?</li>
+  </ul>
+
+  <footer>Twin Bishkek · [Название команды] · © участники OpenStreetMap (ODbL) · данные OpenAQ, Open-Meteo, Нацстатком КР</footer>
+</main>
+</body>
+</html>
