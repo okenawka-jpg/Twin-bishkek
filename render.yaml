@@ -1,0 +1,15 @@
+# Хостинг Render (бесплатный тариф): сайт + API + карта 2GIS по одной ссылке.
+# Render → New → Blueprint → этот репозиторий. Ключ 2GIS вводится в Render при создании (в код не кладём).
+services:
+  - type: web
+    name: twin-bishkek
+    runtime: python
+    plan: free
+    buildCommand: pip install -e ".[api]"
+    startCommand: uvicorn twin_bishkek.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: TWINGIS_MAPGL_KEY
+        sync: false   # Render попросит вставить ключ 2GIS

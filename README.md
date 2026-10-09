@@ -7,6 +7,16 @@
 Город настоящий (OpenStreetMap), воздух подогнан под датчики, живые пробки берутся с карты 2GIS.
 Все коэффициенты сценариев — допущения, см. [docs/ИСТОЧНИКИ_И_ОГРАНИЧЕНИЯ.md](docs/ИСТОЧНИКИ_И_ОГРАНИЧЕНИЯ.md).
 
+## Ссылки
+
+- Сайт (с картой 2GIS): [ссылка появится после деплоя на Render]
+- Презентация: https://claude.ai/artifact/2KwKqiosoe73CHcUqBYnqK
+
+## Деплой (Render, бесплатно)
+
+`render.yaml` в корне: Render → New → Blueprint → этот репозиторий, вставить ключ `TWINGIS_MAPGL_KEY`.
+В кабинете 2GIS разрешить ключу адрес сайта на onrender.com.
+
 ## Быстрый старт (Windows, PowerShell)
 
 ```powershell
