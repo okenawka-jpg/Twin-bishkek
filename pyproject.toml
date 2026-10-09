@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twin-bishkek"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "scikit-learn", "joblib", "requests"]
+
+[project.optional-dependencies]
+api = ["fastapi", "uvicorn[standard]", "pydantic>=2"]
+app = ["streamlit==1.65.0", "pydeck"]
+osm = ["osmnx", "geopandas"]
+dev = ["pytest", "httpx"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.setuptools.package-data]
+twin_bishkek = ["city_real.json"]

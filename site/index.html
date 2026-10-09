@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Bishkek</title>
+<meta name="description" content="Цифровой двойник Бишкека: что будет с трафиком, воздухом и районами, если принять городское решение.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:slnt,wght@-12..0,300..700&family=Martian+Mono:wght@400;500&family=Unbounded:wght@400..800&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+<script>try { var t = localStorage.getItem('tb-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+
+<!-- Иконки: 24px, обводка 1.75, без внешних зависимостей -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 2.2 20.6 7.1v9.8L12 21.8l-8.6-4.9V7.1z"/><path d="m6.3 15.6 3.6-5.3 2.2 2.7 2.4-4.1 3.3 6.7"/></symbol>
+    <symbol id="i-jk" viewBox="0 0 24 24"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17"/><path d="M3 21h18"/><path d="M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1"/><path d="M11 21v-3h2v3"/></symbol>
+    <symbol id="i-tc" viewBox="0 0 24 24"><path d="M5.5 8h13l-1 12.1a1 1 0 0 1-1 .9h-9a1 1 0 0 1-1-.9z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></symbol>
+    <symbol id="i-park" viewBox="0 0 24 24"><path d="M12 21v-5"/><path d="M8.5 16h7a3.5 3.5 0 0 0 1.3-6.75A5 5 0 0 0 7.2 9.25 3.5 3.5 0 0 0 8.5 16z"/><path d="M9 21h6"/></symbol>
+    <symbol id="i-fun" viewBox="0 0 24 24"><circle cx="12" cy="10" r="7"/><circle cx="12" cy="10" r="1.2"/><path d="M12 3v14M5 10h14M7.05 5.05l9.9 9.9M16.95 5.05l-9.9 9.9"/><path d="M8 21l4-7 4 7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17H4a1 1 0 0 1-1-1v-3l2-5.2A2 2 0 0 1 6.9 6.5h10.2A2 2 0 0 1 19 7.8l2 5.2v3a1 1 0 0 1-1 1h-1"/><path d="M3 13h18"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/><path d="M9.3 17h5.4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 11 10 5 20 5c0 10-6 15-14 15"/><path d="M5 19c3-4 6-6 9-7.5"/></symbol>
+    <symbol id="i-stadium" viewBox="0 0 24 24"><ellipse cx="12" cy="8.5" rx="9" ry="4"/><path d="M3 8.5v6.5c0 2.2 4 4 9 4s9-1.8 9-4V8.5"/><path d="M8 12.2v5.6m8-5.6v5.6M12 12.6v6.2"/></symbol>
+    <symbol id="i-bridge" viewBox="0 0 24 24"><path d="M3 17h18M3 9.5h18M5.5 9.5V17m13-7.5V17"/><path d="M5.5 9.5c2 3 4.2 4.3 6.5 4.3s4.5-1.3 6.5-4.3"/></symbol>
+    <symbol id="i-barrier" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="6" rx="1"/><path d="m7 7.5-3 6m8-6-3 6m8-6-3 6m6-5-2.5 5"/><path d="M6.5 13.5V20m11-6.5V20"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2m0 15v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2.5 12h2m15 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/><path d="m9.5 4.6 2.5 1.6 2.5-1.6m-5 14.8 2.5-1.6 2.5 1.6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11A8 8 0 0 0 5.1 7.5M4 3.5v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.5M20 20.5v-4h-4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3.5h10V9"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11m0-11-11 11"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8v.1"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9l-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18M4.5 10h15M12 3l8 5H4z"/><path d="M6.5 10v8m3.8-8v8m3.4-8v8m3.8-8v8"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3.5 16.5 16.5 3.5l4 4-13 13z"/><path d="m7.5 12.5 2 2m1-5 2 2m1-5 2 2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8.5a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7H16"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h7"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h9m4 0h3M4 12h3m4 0h9M4 18h11m4 0h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+    <symbol id="i-hex" viewBox="0 0 24 24"><path d="M12 3 19.8 7.5v9L12 21l-7.8-4.5v-9z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+  </defs>
+</svg>
+
+<div class="app" id="app" data-route="start">
+
+  <!-- ============ САЙДБАР (только Симулятор) ============ -->
+  <aside class="sidebar" id="sidebar" aria-label="Параметры сценария">
+    <a class="brand brand--sidebar" href="#/" aria-label="Twin Bishkek — на старт">
+      <svg class="brand__mark"><use href="#i-logo"/></svg>
+      <span><span class="brand__name">Twin Bishkek</span><span class="brand__sub">цифровой двойник</span></span>
+    </a>
+
+    <section class="sb-section" data-enter>
+      <h2 class="overline">Сценарий</h2>
+      <div class="field">
+        <div class="field__head"><span class="field__label">Сезон</span><span class="field__aside">меняет и «Сегодня»</span></div>
+        <div class="seg" role="group" aria-label="Сезон" id="ctl-season">
+          <button type="button" data-value="summer" aria-pressed="true"><svg class="ic"><use href="#i-sun"/></svg>Лето</button>
+          <button type="button" data-value="winter" aria-pressed="false"><svg class="ic"><use href="#i-snow"/></svg>Зима</button>
+        </div>
+      </div>
+      <div class="switch-row">
+        <svg class="ic"><use href="#i-clock"/></svg>
+        <label class="switch-row__text" for="ctl-hour-on"><span class="switch-row__title">Время суток</span><span class="switch-row__hint">выкл. = в среднем за сутки</span></label>
+        <input type="checkbox" class="switch" id="ctl-hour-on">
+      </div>
+      <div class="field" data-range="hour" id="hour-field" hidden>
+        <div class="field__head"><label class="field__label" for="ctl-hour">Час</label><output class="field__value num" for="ctl-hour"></output></div>
+        <div class="range"><input id="ctl-hour" type="range" min="0" max="23" step="1" value="18"><span class="range__base" title="Начало суток"></span></div>
+        <div class="range__scale num"><span>00:00</span><span>12:00</span><span>23:00</span></div>
+        <p class="field__hint" id="hour-hint"></p>
+      </div>
+    </section>
+
+    <section class="sb-section" data-enter>
+      <h2 class="overline">Глобальные факторы</h2>
+      <div class="field" data-range="fleet">
+        <div class="field__head"><label class="field__label" for="ctl-fleet">Автопарк</label><output class="field__value num" for="ctl-fleet"></output></div>
+        <div class="range"><input id="ctl-fleet" type="range" min="-30" max="50" step="1" value="0"><span class="range__base" title="Сегодня"></span></div>
+        <div class="range__scale num"><span>−30%</span><span>сегодня</span><span>+50%</span></div>
+      </div>
+      <div class="field" data-range="ev">
+        <div class="field__head"><label class="field__label" for="ctl-ev">EV Share</label><output class="field__value num" for="ctl-ev"></output></div>
+        <div class="range"><input id="ctl-ev" type="range" min="0" max="100" step="1" value="5"><span class="range__base" title="Сегодня"></span></div>
+        <div class="fleet" id="fleet-glyphs" aria-hidden="true"></div>
+        <p class="field__hint" id="fleet-caption"></p>
+      </div>
+      <div class="field" data-range="green">
+        <div class="field__head"><label class="field__label" for="ctl-green">Зелёные насаждения</label><output class="field__value num" for="ctl-green"></output></div>
+        <div class="range"><input id="ctl-green" type="range" min="-30" max="30" step="1" value="0"><span class="range__base" title="Сегодня"></span></div>
+        <div class="range__scale num"><span>−30%</span><span>сегодня</span><span>+30%</span></div>
+      </div>
+    </section>
+
+    <section class="sb-section" data-enter>
+      <h2 class="overline">Локальный конструктор</h2>
+      <div class="field">
+        <label class="field__label field__label--block" for="ctl-district">Микрорайон</label>
+        <div class="select"><select id="ctl-district"><option value="">Выберите район</option></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="field">
+        <span class="field__label field__label--block">Объект</span>
+        <div class="seg" role="group" aria-label="Тип объекта" id="ctl-type">
+          <button type="button" data-value="jk" aria-pressed="true"><svg class="ic"><use href="#i-jk"/></svg>ЖК</button>
+          <button type="button" data-value="tc" aria-pressed="false"><svg class="ic"><use href="#i-tc"/></svg>ТЦ</button>
+          <button type="button" data-value="park" aria-pressed="false"><svg class="ic"><use href="#i-park"/></svg>Парк</button>
+          <button type="button" data-value="fun" aria-pressed="false"><svg class="ic"><use href="#i-fun"/></svg>Аттракц.</button>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field__label field__label--block">Стадия</span>
+        <div class="seg" role="group" aria-label="Стадия объекта" id="ctl-phase">
+          <button type="button" data-value="done" aria-pressed="true">Построен</button>
+          <button type="button" data-value="build" aria-pressed="false">Строится</button>
+        </div>
+      </div>
+      <div class="field field--row">
+        <div class="stepper" role="group" aria-label="Количество">
+          <button type="button" id="ctl-minus" aria-label="Меньше"><svg class="ic"><use href="#i-minus"/></svg></button>
+          <output id="ctl-count" class="num">1</output>
+          <button type="button" id="ctl-plus" aria-label="Больше"><svg class="ic"><use href="#i-plus"/></svg></button>
+        </div>
+        <button type="button" class="btn btn--primary btn--grow" id="ctl-add" disabled><svg class="ic"><use href="#i-plus"/></svg><span>Добавить</span></button>
+      </div>
+      <div class="chips" id="obj-chips" aria-live="polite"></div>
+    </section>
+
+    <section class="sb-section" data-enter>
+      <h2 class="overline">Новая дорога</h2>
+      <div class="field">
+        <span class="field__label field__label--block">Тип</span>
+        <div class="seg" role="group" aria-label="Тип дороги" id="road-kind">
+          <button type="button" data-value="tunnel" aria-pressed="true">Тоннель</button>
+          <button type="button" data-value="elevated" aria-pressed="false">Эстакада</button>
+          <button type="button" data-value="surface" aria-pressed="false">Обычная</button>
+        </div>
+        <p class="field__hint" id="road-kind-hint"></p>
+      </div>
+      <div class="field road-row">
+        <div class="select"><select id="road-lanes" aria-label="Полос"><option value="2">2 полосы</option><option value="4" selected>4 полосы</option><option value="6">6 полос</option></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+        <div class="seg seg--sm" role="group" aria-label="Стадия дороги" id="road-phase">
+          <button type="button" data-value="done" aria-pressed="true">Построена</button>
+          <button type="button" data-value="build" aria-pressed="false">Строится</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn--primary btn--block" id="road-draw"><svg class="ic"><use href="#i-route"/></svg>Нарисовать на карте</button>
+      <div class="road-drawbar" id="road-drawbar" hidden>
+        <p>Кликайте по карте «Если…»: каждая точка — поворот трассы. Двойной клик или «Готово» — закончить.</p>
+        <div class="road-drawbar__btns">
+          <button type="button" class="btn btn--primary btn--sm" data-draw="done">Готово</button>
+          <button type="button" class="btn btn--ghost btn--sm" data-draw="undo">Убрать точку</button>
+          <button type="button" class="btn btn--ghost btn--sm" data-draw="cancel">Отмена</button>
+        </div>
+      </div>
+      <form class="road-text" id="road-text-form" autocomplete="off">
+        <input type="text" id="road-text" maxlength="160" aria-label="Маршрут словами" placeholder="или словами: тоннель от Джала до Учкуна через центр">
+        <button type="submit" class="btn btn--secondary btn--sm">Построить</button>
+      </form>
+      <p class="field__hint" id="road-hint"></p>
+      <div class="chips" id="road-chips" aria-live="polite"></div>
+    </section>
+
+    <section class="sb-section" data-enter>
+      <h2 class="overline">Деревья</h2>
+      <div class="field tree-row">
+        <div class="select"><select id="tree-sp" aria-label="Порода"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+        <input type="number" id="tree-n" min="1" max="100000" step="1" value="500" aria-label="Сколько деревьев">
+      </div>
+      <p class="field__hint" id="tree-sp-hint"></p>
+      <div class="field">
+        <span class="field__label field__label--block">Где сажать</span>
+        <div class="seg seg--sm" role="group" aria-label="Где сажать" id="tree-where">
+          <button type="button" data-value="d" aria-pressed="true">В районе</button>
+          <button type="button" data-value="s" aria-pressed="false">Вдоль улицы</button>
+          <button type="button" data-value="p" aria-pressed="false">Нарисовать</button>
+        </div>
+      </div>
+      <div class="select" id="tree-d-wrap"><select id="tree-d" aria-label="Район"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+      <div class="select" id="tree-s-wrap" hidden><select id="tree-s" aria-label="Улица"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+      <button type="button" class="btn btn--primary btn--block" id="tree-add"><svg class="ic"><use href="#i-leaf"/></svg>Посадить</button>
+      <div class="road-drawbar" id="tree-drawbar" hidden>
+        <p>Кликайте по карте «Если…»: линия посадки (аллея). Двойной клик или «Готово» — закончить.</p>
+        <div class="road-drawbar__btns">
+          <button type="button" class="btn btn--primary btn--sm" data-draw="done">Готово</button>
+          <button type="button" class="btn btn--ghost btn--sm" data-draw="undo">Убрать точку</button>
+          <button type="button" class="btn btn--ghost btn--sm" data-draw="cancel">Отмена</button>
+        </div>
+      </div>
+      <form class="road-text" id="tree-text-form" autocomplete="off">
+        <input type="text" id="tree-text" maxlength="160" aria-label="Посадка словами" placeholder="или словами: 300 платанов вдоль Чуя">
+        <button type="submit" class="btn btn--secondary btn--sm">Посадить</button>
+      </form>
+      <div class="field" data-range="treeage">
+        <div class="field__head"><label class="field__label" for="tree-age">Прошло после посадки</label><output class="field__value num" for="tree-age"></output></div>
+        <div class="range"><input id="tree-age" type="range" min="0" max="30" step="1" value="0"><span class="range__base" title="Только посадили"></span></div>
+        <div class="range__scale num"><span>посадили</span><span>15 лет</span><span>30 лет</span></div>
+      </div>
+      <p class="field__hint" id="tree-hint"></p>
+      <div class="chips" id="tree-chips" aria-live="polite"></div>
+    </section>
+
+    <section class="sb-section" data-enter>
+      <h2 class="overline">Стресс-тесты</h2>
+      <div class="switch-row">
+        <svg class="ic"><use href="#i-barrier"/></svg>
+        <label class="switch-row__text" for="ctl-closure"><span class="switch-row__title">Перекрытие улиц</span><span class="switch-row__hint">ремонт, −50% полосы</span></label>
+        <input type="checkbox" class="switch" id="ctl-closure">
+      </div>
+      <div class="select select--sub" id="closure-pick" hidden><select id="ctl-closure-street" aria-label="Какая улица"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+      <div class="switch-row">
+        <svg class="ic"><use href="#i-route"/></svg>
+        <label class="switch-row__text" for="ctl-widen"><span class="switch-row__title">Новая магистраль</span><span class="switch-row__hint">после стройки: +50% ёмкости улицы</span></label>
+        <input type="checkbox" class="switch" id="ctl-widen">
+      </div>
+      <div class="select select--sub" id="widen-pick" hidden><select id="ctl-widen-street" aria-label="Вдоль какой улицы"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+      <div class="switch-row">
+        <svg class="ic"><use href="#i-stadium"/></svg>
+        <label class="switch-row__text" for="ctl-match"><span class="switch-row__title">Концерт / матч</span><span class="switch-row__hint">стадион на выбор</span></label>
+        <input type="checkbox" class="switch" id="ctl-match">
+      </div>
+      <div class="select select--sub" id="match-pick" hidden><select id="ctl-match-venue" aria-label="Какой стадион"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+      <div class="switch-row">
+        <svg class="ic"><use href="#i-bridge"/></svg>
+        <label class="switch-row__text" for="ctl-bridge"><span class="switch-row__title">Ремонт моста</span><span class="switch-row__hint">поток уходит на соседние переправы</span></label>
+        <input type="checkbox" class="switch" id="ctl-bridge">
+      </div>
+      <div class="select select--sub" id="bridge-pick" hidden><select id="ctl-bridge-river" aria-label="Какой мост"></select><svg class="ic"><use href="#i-chevron"/></svg></div>
+    </section>
+
+    <footer class="sb-foot">
+      <button type="button" class="btn btn--secondary btn--block" id="ctl-reset"><svg class="ic"><use href="#i-refresh"/></svg>Сбросить к базе</button>
+      <p class="sb-status num" id="sim-status">расчёт — · модель demo-0.3 · демо-калибровка</p>
+    </footer>
+  </aside>
+
+  <div class="main" id="main">
+    <!-- ============ ШАПКА ============ -->
+    <header class="topbar" id="topbar">
+      <a class="brand" href="#/" aria-label="Twin Bishkek — на старт">
+        <svg class="brand__mark"><use href="#i-logo"/></svg><span class="brand__name">Twin Bishkek</span>
+      </a>
+      <nav class="nav" aria-label="Разделы">
+        <a href="#/" data-route="start">Старт</a>
+        <a href="#/sim" data-route="sim">Симулятор</a>
+        <a href="#/compare" data-route="compare">Сравнение<span class="nav__count num" id="nav-count" hidden></span></a>
+        <a href="#/method" data-route="method">Методология</a>
+      </nav>
+      <div class="topbar__right">
+        <span class="demo-badge" title="Все числа в прототипе — демо-калибровка, не замеры">демо-данные</span>
+        <button type="button" class="btn btn--ghost btn--icon" id="theme-toggle" aria-label="Переключить тему">
+          <svg class="ic ic--sun"><use href="#i-sun"/></svg><svg class="ic ic--moon"><use href="#i-moon"/></svg>
+        </button>
+      </div>
+      <div class="progress" id="progress"></div>
+    </header>
+
+    <main>
+      <!-- ============ СТАРТ ============ -->
+      <section class="screen screen--start" data-screen="start" hidden>
+        <div class="hero" id="hero">
+          <div class="hero__pano" id="hero-pano"></div>
+          <div class="hero__content">
+            <div class="hero__text">
+              <p class="overline" data-enter>Цифровой двойник Бишкека</p>
+              <h1 data-enter>Горы видно?</h1>
+              <p class="hero__lead" data-enter>Twin Bishkek показывает, что будет с&nbsp;пробками, воздухом и&nbsp;районами, если принять городское решение. Проверьте его на модели, прежде чем проверять на людях.</p>
+              <div class="hero__cta" data-enter>
+                <a class="btn btn--primary btn--lg" href="#/sim">Открыть симулятор<svg class="ic"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn--secondary btn--lg" href="#/method">Как это считается</a>
+              </div>
+            </div>
+            <div class="hero-card" data-enter>
+              <div class="hero-card__head">
+                <span class="overline">Попробуйте</span>
+                <div class="seg seg--sm" role="group" aria-label="Сезон" id="hero-season">
+                  <button type="button" data-value="summer" aria-pressed="true"><svg class="ic"><use href="#i-sun"/></svg>Лето</button>
+                  <button type="button" data-value="winter" aria-pressed="false"><svg class="ic"><use href="#i-snow"/></svg>Зима</button>
+                </div>
+              </div>
+              <div class="field" data-range="hero-fleet">
+                <div class="field__head"><label class="field__label" for="hero-fleet">Автопарк</label><output class="field__value num" for="hero-fleet"></output></div>
+                <div class="range"><input id="hero-fleet" type="range" min="-30" max="50" step="1" value="0"><span class="range__base"></span></div>
+                <div class="range__scale num"><span>−30%</span><span>сегодня</span><span>+50%</span></div>
+              </div>
+              <div class="hero-card__out">
+                <div><span class="overline">AQI города</span><div class="hero-card__aqi"><span class="num" id="hero-aqi">—</span><span class="aqi-chip" id="hero-cat"></span></div></div>
+                <div><span class="overline">Горы</span><div class="hero-card__vis"><b id="hero-verdict">—</b><span class="num" id="hero-vis"></span></div></div>
+              </div>
+            </div>
+          </div>
+          <a class="hero__scroll" href="#start-cascade" aria-label="Листать дальше"><svg class="ic"><use href="#i-chevron"/></svg></a>
+        </div>
+
+        <div class="wrap">
+          <section class="block" id="start-cascade">
+            <p class="overline">Каскад</p>
+            <h2 class="block__title">Одно решение меняет четыре вещи сразу</h2>
+            <div class="cascade">
+              <svg class="cascade__line" viewBox="0 0 1000 20" preserveAspectRatio="none" aria-hidden="true"><path d="M60 10H940"/></svg>
+              <article class="cascade__card"><span class="cascade__num num">01</span><svg class="ic ic--lg"><use href="#i-sliders"/></svg><h3>Решение</h3><p>Квота на ввоз машин, новый ЖК, вырубка сквера, матч или ремонт моста.</p></article>
+              <article class="cascade__card"><span class="cascade__num num">02</span><svg class="ic ic--lg"><use href="#i-route"/></svg><h3>Трафик</h3><p>Поток на улицах пересчитывается по BPR-функции: задержка и скорость.</p></article>
+              <article class="cascade__card"><span class="cascade__num num">03</span><svg class="ic ic--lg"><use href="#i-wind"/></svg><h3>Воздух</h3><p>Выхлоп дают только ДВС, зимой добавляется фон угольного отопления.</p></article>
+              <article class="cascade__card"><span class="cascade__num num">04</span><svg class="ic ic--lg"><use href="#i-hex"/></svg><h3>Район</h3><p>Нагрузка на школы и поликлиники и индекс комфорта микрорайона.</p></article>
+            </div>
+          </section>
+
+          <section class="block">
+            <p class="overline">Для кого</p>
+            <h2 class="block__title">Три аудитории, один экран</h2>
+            <div class="audience">
+              <article class="aud"><svg class="ic ic--lg"><use href="#i-landmark"/></svg><h3>Мэрия</h3><p>Сравнить квоты и льготы до совещания и получить готовый вывод с цифрами.</p><span class="aud__uc num">UC-01 · UC-03 · UC-05</span></article>
+              <article class="aud"><svg class="ic ic--lg"><use href="#i-ruler"/></svg><h3>Урбанисты</h3><p>Проверить, выдержит ли район новую застройку, и сформулировать условия застройщику.</p><span class="aud__uc num">UC-02</span></article>
+              <article class="aud"><svg class="ic ic--lg"><use href="#i-home"/></svg><h3>Жители</h3><p>Увидеть, что вырубка сквера сделает с воздухом их района, и выбрать район для жизни.</p><span class="aud__uc num">UC-04 · UC-06</span></article>
+            </div>
+          </section>
+
+          <footer class="site-foot">
+            <div class="brand"><svg class="brand__mark"><use href="#i-logo"/></svg><span class="brand__name">Twin Bishkek</span></div>
+            <ul class="team">
+              <li><b>Хранитель данных</b><span>Data &amp; Geo</span></li>
+              <li><b>Мозги проекта</b><span>ML &amp; Simulation</span></li>
+              <li><b>Лицо проекта</b><span>UI/UX &amp; Presentation</span></li>
+            </ul>
+            <p class="site-foot__note">Прототип дизайна. Все числа — демо-калибровка, а не замеры. Схема города условная.</p>
+          </footer>
+        </div>
+      </section>
+
+      <!-- ============ СИМУЛЯТОР ============ -->
+      <section class="screen screen--sim" data-screen="sim" hidden>
+        <div class="sim">
+          <header class="sim-head" data-enter>
+            <div class="sim-head__text">
+              <p class="overline" id="sim-kicker">Сценарий</p>
+              <h1 class="sim-head__title" id="sim-title">Сегодня</h1>
+              <p class="sim-head__summary" id="sim-summary"></p>
+            </div>
+            <div class="sim-head__actions">
+              <div class="presets" id="presets" role="group" aria-label="Готовые сценарии"></div>
+              <button type="button" class="btn btn--secondary" id="btn-save"><svg class="ic"><use href="#i-copy"/></svg>В сравнение</button>
+            </div>
+          </header>
+
+          <div class="kpis" id="kpis">
+            <article class="kpi" data-kpi="aqi" data-enter>
+              <header class="kpi__label"><span class="overline">AQI · PM2.5</span><span class="kpi__scope" data-scope>город</span></header>
+              <div class="kpi__main"><span class="kpi__value num" data-value>—</span><span class="aqi-chip" data-chip></span></div>
+              <div class="kpi__row"><span class="kpi__was num" data-was></span><span class="delta" data-delta></span></div>
+              <p class="kpi__extra num" data-extra></p>
+              <div class="kpi__bars"><div class="kpi__bar"><i data-bar-base></i></div><div class="kpi__bar kpi__bar--sim"><i data-bar-sim></i></div></div>
+            </article>
+            <article class="kpi" data-kpi="delay" data-enter>
+              <header class="kpi__label"><span class="overline">Задержка в пути</span><span class="kpi__scope" data-scope>город</span></header>
+              <div class="kpi__main"><span class="kpi__value num" data-value>—</span><span class="kpi__unit">мин</span></div>
+              <div class="kpi__row"><span class="kpi__was num" data-was></span><span class="delta" data-delta></span></div>
+              <p class="kpi__extra num" data-extra></p>
+              <div class="kpi__bars"><div class="kpi__bar"><i data-bar-base></i></div><div class="kpi__bar kpi__bar--sim"><i data-bar-sim></i></div></div>
+            </article>
+            <article class="kpi" data-kpi="speed" data-enter>
+              <header class="kpi__label"><span class="overline">Скорость</span><span class="kpi__scope" data-scope>город</span></header>
+              <div class="kpi__main"><span class="kpi__value num" data-value>—</span><span class="kpi__unit">км/ч</span></div>
+              <div class="kpi__row"><span class="kpi__was num" data-was></span><span class="delta" data-delta></span></div>
+              <p class="kpi__extra num" data-extra></p>
+              <div class="kpi__bars"><div class="kpi__bar"><i data-bar-base></i></div><div class="kpi__bar kpi__bar--sim"><i data-bar-sim></i></div></div>
+            </article>
+            <article class="kpi" data-kpi="comfort" data-enter>
+              <header class="kpi__label"><span class="overline">Urban Comfort</span><span class="kpi__scope" data-scope>город</span></header>
+              <div class="kpi__main"><span class="kpi__value num" data-value>—</span><span class="kpi__unit">из 100</span></div>
+              <div class="kpi__row"><span class="kpi__was num" data-was></span><span class="delta" data-delta></span></div>
+              <div class="comfort-bar" data-parts aria-label="Состав индекса комфорта"></div>
+              <p class="kpi__extra kpi__extra--legend" data-parts-legend></p>
+            </article>
+          </div>
+
+          <article class="card card--explain" id="explain-card" data-enter aria-live="polite">
+            <header class="card__head">
+              <div><h2 class="card__title">Разбор от модели</h2><p class="card__sub">Что произойдёт, почему и что с этим можно сделать. Все числа считает модель</p></div>
+            </header>
+            <div class="explain" id="explain-body"></div>
+          </article>
+
+          <div class="mapmode" id="mapmode" data-enter>
+            <div class="seg seg--sm" role="group" aria-label="Стройка: сейчас или после окончания" id="ctl-stage" hidden title="Что показывать на картах и в цифрах: пока идут работы или когда всё построено">
+              <button type="button" data-value="now" aria-pressed="true">Во время стройки</button>
+              <button type="button" data-value="after" aria-pressed="false">После окончания</button>
+            </div>
+            <div class="seg seg--sm" role="group" aria-label="Тип карты" id="ctl-basemap">
+              <button type="button" data-value="gis" aria-pressed="false">Карта 2GIS</button>
+              <button type="button" data-value="schema" aria-pressed="true">Схема OSM</button>
+            </div>
+            <span class="mapmode__status" id="gis-status">Карта 2GIS не подключена: показана схема</span>
+            <label class="mapmode__learn" id="gis-learn-wrap" hidden title="Часы суток в модели подгоняются под замеры 2GIS, когда их накоплено достаточно"><input type="checkbox" id="gis-learn"> Учитывать замеры 2GIS</label>
+            <span class="mapmode__archive num" id="gis-archive"></span>
+            <button type="button" class="btn btn--ghost btn--sm" id="gis-key-btn" hidden>Ключ</button>
+          </div>
+          <form class="gis-key" id="gis-key" hidden>
+            <p><b>Нужен ключ 2GIS (Map Tiles API).</b> Вставьте demo-ключ из кабинета platform.2gis.com. Он сохранится только в этой вкладке. Чтобы не вставлять каждый раз, запустите сервер с переменной TWINGIS_MAPGL_KEY.</p>
+            <div class="gis-key__row"><input type="text" id="gis-key-input" placeholder="ключ" autocomplete="off" spellcheck="false"><button type="submit" class="btn btn--primary btn--sm">Показать карту</button></div>
+          </form>
+
+          <div class="maps maps--gis" id="maps-gis" hidden>
+            <article class="mapcard" data-enter>
+              <header class="mapcard__head">
+                <span class="state-pill state-pill--base">Сейчас</span>
+                <span class="mapcard__title">Пробки 2GIS</span>
+                <span class="mapcard__score num" id="gis-score">ждём индекс…</span>
+              </header>
+              <div class="gismap" id="gis-live" aria-label="Текущая карта пробок Бишкека по данным 2GIS"></div>
+              <p class="gis-note">Это реальные пробки на карте 2GIS. Пока вкладка открыта, индекс сохраняется раз в 15 минут и сверяется с моделью.</p>
+            </article>
+            <article class="mapcard mapcard--sim" data-enter>
+              <header class="mapcard__head">
+                <span class="state-pill state-pill--sim">Если…</span>
+                <span class="mapcard__title" id="gis-sim-title">измените параметры слева</span>
+                <div class="seg seg--sm" role="group" aria-label="Слои карты" id="ctl-layer-gis">
+                  <button type="button" data-value="air" aria-pressed="false">Воздух</button>
+                  <button type="button" data-value="traffic" aria-pressed="false">Трафик</button>
+                  <button type="button" data-value="both" aria-pressed="true">Оба</button>
+                </div>
+              </header>
+              <div class="gismap" id="gis-sim" aria-label="Расчётная загруженность улиц по сценарию на карте 2GIS"></div>
+              <div class="gis-legend"><span><i style="background:#30b45a"></i>свободно</span><span><i style="background:#f3d117"></i>плотно</span><span><i style="background:#ff453a"></i>затор</span><span><i style="background:#8c1c2c"></i>стоим</span><span><i class="gis-legend__x"></i>закрыто</span></div>
+              <p class="gis-note">Цвета улиц рассчитывает наша модель (BPR) на геометрии OpenStreetMap. Слой «Воздух» красит соты по AQI.</p>
+            </article>
+          </div>
+
+          <div class="maps" id="maps-schema">
+            <article class="mapcard" data-enter>
+              <header class="mapcard__head">
+                <span class="state-pill state-pill--base">Сегодня</span>
+                <span class="mapcard__title" id="map-base-title">Бишкек сейчас</span>
+                <div class="seg seg--sm" role="group" aria-label="Слои карты" id="ctl-layer">
+                  <button type="button" data-value="air" aria-pressed="false">Воздух</button>
+                  <button type="button" data-value="traffic" aria-pressed="false">Трафик</button>
+                  <button type="button" data-value="both" aria-pressed="true">Оба</button>
+                </div>
+              </header>
+              <div class="mapview" id="map-base">
+                <div class="legend" id="legend">
+                  <div class="legend__row"><span class="legend__ramp" aria-hidden="true"></span></div>
+                  <div class="legend__ticks num"><span>AQI 0</span><span>100</span><span>200</span><span>300+</span></div>
+                  <div class="legend__traffic"><span><i class="lt lt--free"></i>свободно</span><span><i class="lt lt--dense"></i>плотно</span><span><i class="lt lt--jam"></i>затор</span><span><i class="lt lt--severe"></i>стоим</span></div>
+                  <p class="legend__note">Пробки: расчёт модели, не онлайн-данные</p>
+                </div>
+              </div>
+              <div class="pano" id="pano-base"></div>
+            </article>
+            <article class="mapcard mapcard--sim" data-enter>
+              <header class="mapcard__head">
+                <span class="state-pill state-pill--sim">Если…</span>
+                <span class="mapcard__title" id="map-sim-title">измените параметры слева</span>
+                <button type="button" class="btn btn--ghost btn--sm" id="ctl-delta" aria-pressed="false" title="Показать изменение AQI по сотам"><span class="delta-glyph">Δ</span>Разница</button>
+              </header>
+              <div class="mapview" id="map-sim">
+                <div class="legend legend--delta" id="legend-delta" hidden>
+                  <div class="legend__delta"><i style="background:var(--d-b3)"></i><i style="background:var(--d-b2)"></i><i style="background:var(--d-b1)"></i><i style="background:var(--d-0)"></i><i style="background:var(--d-w1)"></i><i style="background:var(--d-w2)"></i><i style="background:var(--d-w3)"></i></div>
+                  <div class="legend__ticks legend__ticks--delta num"><span>лучше</span><span>Δ AQI</span><span>хуже</span></div>
+                </div>
+                <div class="map-empty" id="map-empty">Измените параметры слева — здесь появится результат</div>
+              </div>
+              <div class="pano" id="pano-sim"></div>
+            </article>
+          </div>
+
+          <article class="card card--day" data-enter>
+            <header class="card__head">
+              <div><h2 class="card__title">Сутки по часам</h2><p class="card__sub">Пробки и смог в выбранном сценарии. Нажмите на час или на время суток</p></div>
+              <div class="seg seg--sm" role="group" aria-label="Время суток" id="ctl-daypart">
+                <button type="button" data-value="avg" aria-pressed="true">В среднем</button>
+                <button type="button" data-value="8" aria-pressed="false">Утро</button>
+                <button type="button" data-value="13" aria-pressed="false">Обед</button>
+                <button type="button" data-value="18" aria-pressed="false">Вечер</button>
+                <button type="button" data-value="22" aria-pressed="false">Ночь</button>
+              </div>
+            </header>
+            <div class="day-legend num"><span class="day-key day-key--traffic">Пробки: задержка, мин</span><span class="day-key day-key--smog">Смог: AQI</span></div>
+            <div class="wf-wrap" id="dayline"></div>
+            <p class="card__foot num" id="day-foot"></p>
+          </article>
+
+          <article class="card card--plan" id="plan-card" data-enter>
+            <header class="card__head">
+              <div><h2 class="card__title">План изменений во времени</h2><p class="card__sub">Запишите, что и когда строится или перекрывается. Ползунок покажет город в любой месяц: во время работ и после них</p></div>
+              <div class="plan__tools">
+                <button type="button" class="btn btn--ghost btn--sm" id="plan-sample">Пример плана</button>
+                <button type="button" class="btn btn--ghost btn--sm" id="plan-clear">Очистить</button>
+              </div>
+            </header>
+            <form class="plan__form" id="plan-form">
+              <label>Что<select id="plan-kind">
+                <option value="build">Строительство объекта</option>
+                <option value="closure">Перекрытие улицы</option>
+                <option value="bridge">Закрытие моста</option>
+                <option value="widen">Новая магистраль (расширение)</option>
+                <option value="road">Новая дорога (тоннель / эстакада / обычная)</option>
+                <option value="trees">Посадка деревьев</option>
+              </select></label>
+              <label id="plan-where-wrap">Где<select id="plan-where"></select></label>
+              <div class="plan__bld" id="plan-trees" hidden>
+                <label>Порода<select id="plan-sp"></select></label>
+                <label>Сколько<input type="number" id="plan-tn" min="1" max="100000" step="1" value="500"></label>
+                <label class="plan__note">Или словами<input type="text" id="plan-twords" placeholder="300 платанов вдоль Чуя" maxlength="160"></label>
+              </div>
+              <div class="plan__bld" id="plan-road" hidden>
+                <label>Тип<select id="plan-rkind"><option value="tunnel">Тоннель</option><option value="elevated">Эстакада</option><option value="surface">Обычная</option></select></label>
+                <label>Полос<select id="plan-lanes"><option value="2">2</option><option value="4" selected>4</option><option value="6">6</option></select></label>
+                <label class="plan__note">Трасса словами<input type="text" id="plan-route" placeholder="от Джала до Учкуна через центр" maxlength="160"></label>
+                <button type="button" class="btn btn--ghost btn--sm" id="plan-route-map" title="Взять последнюю дорогу, нарисованную в боковой панели">Взять с карты</button>
+              </div>
+              <label id="plan-type-wrap">Объект<select id="plan-type"></select></label>
+              <div class="plan__bld" id="plan-bld">
+                <label>Название<input type="text" id="plan-title" placeholder="например, ЖК «Асанбай-3»" maxlength="60"></label>
+                <label><span id="plan-cap-label">Семей</span><input type="number" id="plan-cap" min="1" step="1" value="600"></label>
+                <label>Парковочных мест<input type="number" id="plan-spots" min="0" step="1" placeholder="не указано"></label>
+                <label>Этажей<input type="number" id="plan-floors" min="1" max="60" step="1" placeholder="—"></label>
+                <label class="plan__note">Заметка<input type="text" id="plan-note-in" placeholder="школа в составе, подземный паркинг…" maxlength="120"></label>
+              </div>
+              <label>С месяца<input type="month" id="plan-start" required></label>
+              <label>До месяца<input type="month" id="plan-end" required></label>
+              <button type="submit" class="btn btn--primary btn--sm">Добавить в план</button>
+            </form>
+            <p class="plan__calc" id="plan-calc" hidden></p>
+            <p class="plan__err" id="plan-err" hidden></p>
+            <ul class="plan__list" id="plan-list"></ul>
+            <div class="plan__time" id="plan-time" hidden>
+              <div class="plan__date">
+                <button type="button" class="btn btn--ghost btn--sm" id="plan-play" aria-pressed="false">▶ Показать по месяцам</button>
+                <input type="range" id="plan-t" min="0" max="36" value="0" step="1" aria-label="Месяц плана">
+                <b class="num" id="plan-when"></b>
+              </div>
+              <div class="plan__kpis" id="plan-kpis"></div>
+              <div class="plan__chartbar">
+                <div class="seg seg--sm" role="group" aria-label="Показатель" id="plan-metric">
+                  <button type="button" data-value="delay" aria-pressed="true">Задержка</button>
+                  <button type="button" data-value="aqi" aria-pressed="false">AQI</button>
+                  <button type="button" data-value="comfort" aria-pressed="false">Комфорт</button>
+                </div>
+                <label class="plan__follow"><input type="checkbox" id="plan-follow"> Показывать этот месяц на картах выше</label>
+              </div>
+              <div id="plan-chart" role="img" aria-label="Показатель по месяцам и график работ"></div>
+              <p class="card__foot" id="plan-note"></p>
+            </div>
+          </article>
+
+          <article class="card card--learn" id="learn-card" data-enter hidden>
+            <header class="card__head">
+              <div><h2 class="card__title">Что модель узнала от 2GIS</h2><p class="card__sub" id="learn-sub">Индекс пробок 2GIS по часам против ритма нашей модели</p></div>
+              <span class="mapmode__archive num" id="learn-count"></span>
+            </header>
+            <div class="learn" id="learn-chart" role="img" aria-label="Балл 2GIS по часам и ритм модели"></div>
+            <p class="learn__verdict" id="learn-verdict"></p>
+            <div class="learn__env" id="learn-env"></div>
+          </article>
+
+          <div class="bottom">
+            <article class="card" data-enter>
+              <header class="card__head">
+                <div><h2 class="card__title">Разложение эффекта</h2><p class="card__sub">Какой шаг сценария сколько добавил к итогу</p></div>
+                <div class="seg seg--sm" role="group" aria-label="Показатель" id="ctl-wf">
+                  <button type="button" data-value="aqi" aria-pressed="true">AQI</button>
+                  <button type="button" data-value="delay" aria-pressed="false">Задержка</button>
+                  <button type="button" data-value="comfort" aria-pressed="false">Комфорт</button>
+                </div>
+              </header>
+              <div class="wf-wrap" id="waterfall"></div>
+              <p class="card__foot num">Последовательное разложение: порядок шагов влияет на вклад каждого. Подробнее в Методологии.</p>
+            </article>
+            <article class="card district" id="district-card" data-enter></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ СРАВНЕНИЕ ============ -->
+      <section class="screen screen--compare" data-screen="compare" hidden>
+        <div class="wrap wrap--wide">
+          <header class="page-head" data-enter>
+            <div>
+              <p class="overline">Сравнение</p>
+              <h1 class="page-head__title">Сравнение сценариев</h1>
+              <p class="page-head__lead">До трёх сохранённых сценариев рядом с «Сегодня». Лучшее значение в строке отмечено звездой.</p>
+            </div>
+            <div class="page-head__actions">
+              <button type="button" class="btn btn--secondary" id="cmp-csv"><svg class="ic"><use href="#i-download"/></svg>CSV</button>
+              <button type="button" class="btn btn--secondary" id="cmp-print"><svg class="ic"><use href="#i-print"/></svg>Печать / PDF</button>
+              <button type="button" class="btn btn--ghost" id="cmp-clear">Очистить</button>
+            </div>
+          </header>
+          <div id="compare-body"></div>
+        </div>
+      </section>
+
+      <!-- ============ МЕТОДОЛОГИЯ ============ -->
+      <section class="screen screen--method" data-screen="method" hidden>
+        <div class="wrap wrap--method">
+          <nav class="toc" aria-label="Оглавление">
+            <p class="overline">Методология</p>
+            <a href="#m-cascade">Каскад</a>
+            <a href="#m-traffic">Трафик</a>
+            <a href="#m-air">Воздух</a>
+            <a href="#m-aqi">Шкала AQI</a>
+            <a href="#m-comfort">Urban Comfort</a>
+            <a href="#m-vis">Видимость гор</a>
+            <a href="#m-data">Источники данных</a>
+            <a href="#m-limits">Ограничения</a>
+            <a href="#m-team">Команда</a>
+          </nav>
+          <article class="doc">
+            <header class="doc__head" data-enter>
+              <p class="overline">Как это считается</p>
+              <h1 class="page-head__title">Методология</h1>
+              <p class="page-head__lead">Модель прототипа намеренно простая и прозрачная: каждую формулу можно проверить руками и перенести в Python один к одному. Числа — демо-калибровка.</p>
+            </header>
+
+            <section id="m-cascade">
+              <h2>Каскад</h2>
+              <p>Решение меняет поток машин на улицах. Поток задаёт задержку и выхлоп ДВС. Выхлоп вместе с сезонным фоном даёт PM2.5 и AQI. Всё это вместе с нагрузкой на соцобъекты складывается в комфорт района.</p>
+              <div class="flow" aria-hidden="true"><span>Решение</span><svg class="ic"><use href="#i-arrow"/></svg><span>Трафик</span><svg class="ic"><use href="#i-arrow"/></svg><span>PM2.5 → AQI</span><svg class="ic"><use href="#i-arrow"/></svg><span>Комфорт района</span></div>
+            </section>
+
+            <section id="m-traffic">
+              <h2>Трафик</h2>
+              <p>Город разбит на сегменты улиц. У каждого есть загрузка V/C: поток к пропускной способности. Время проезда считается по BPR-функции — стандарту транспортного моделирования:</p>
+              <div class="formula">t = t<sub>0</sub> · (1 + α · (V/C)<sup>β</sup>)</div>
+              <dl class="params num"><div><dt>α</dt><dd>0,5 — поднято с классических 0,15 под заторы центра (демо)</dd></div><div><dt>β</dt><dd>4</dd></div><div><dt>t<sub>0</sub></dt><dd>22 мин — средняя поездка без заторов</dd></div><div><dt>v<sub>0</sub></dt><dd>40 км/ч — скорость свободного потока</dd></div></dl>
+              <p>Автопарк умножает поток на всех улицах. ЖК и ТЦ добавляют поток рядом со своим районом, вклад затухает с расстоянием. Матч нагружает улицы у стадиона. Ремонт моста закрывает переправу и перекидывает поток на соседние. Перекрытие режет ёмкость на 50% и уводит 30% потока на параллельные улицы.</p>
+            </section>
+
+            <section id="m-air">
+              <h2>Воздух</h2>
+              <div class="formula">PM2.5 = (фон сезона + k · поток рядом · доля ДВС) · m<sub>зелень</sub> · m<sub>парк</sub></div>
+              <p><b>EV добавляют пробки, но не выхлоп</b> — строго по правилу ТЗ. Поэтому, если весь прирост парка — электромобили, PM2.5 не меняется, а задержка растёт. Влияние пробок на выбросы на холостом ходу в прототипе не учитывается.</p>
+              <p>Зимой фон выше в районах частного сектора (угольное отопление), а транспортный вклад умножается на 1,4: инверсия удерживает выхлоп у земли.</p>
+            </section>
+
+            <section id="m-aqi">
+              <h2>Шкала AQI</h2>
+              <p>PM2.5 переводится в AQI по шкале US EPA (редакция 2024), линейной интерполяцией внутри диапазона: AQI = (I<sub>hi</sub> − I<sub>lo</sub>) / (C<sub>hi</sub> − C<sub>lo</sub>) · (C − C<sub>lo</sub>) + I<sub>lo</sub>.</p>
+              <table class="aqi-table"><thead><tr><th>AQI</th><th>PM2.5, мкг/м³</th><th>Категория</th></tr></thead><tbody id="aqi-table-body"></tbody></table>
+            </section>
+
+            <section id="m-comfort">
+              <h2>Urban Comfort Score</h2>
+              <div class="formula">UCS = 100 · (w<sub>в</sub>·(1 − AQI/300) + w<sub>д</sub>·(1 − задержка/30) + w<sub>з</sub>·зелень/16 + w<sub>с</sub>·(1 − перегруз соцобъектов))</div>
+              <p>Каждая часть обрезается до диапазона 0…1. Веса — вопрос ценностей, а не математики. Подвигайте их и посмотрите, как меняется оценка текущего сценария:</p>
+              <div class="weights" id="weights"></div>
+              <div class="weights-out" id="weights-out"></div>
+            </section>
+
+            <section id="m-vis">
+              <h2>Видимость гор</h2>
+              <p>«Горы видно» — иллюстрация, а не измерение. Видимость = 1 − (AQI − 40) / 190, в пределах 3…100%. От 75% горы видно, от 35% — в дымке, ниже — гор не видно.</p>
+            </section>
+
+            <section id="m-data">
+              <h2>Источники данных</h2>
+              <ul class="list">
+                <li><b>Геометрия:</b> полигоны микрорайонов и дорожный граф из OpenStreetMap (OSMnx) — Спринт 1. В прототипе — условная схема.</li>
+                <li><b>Базовый PM2.5:</b> открытые сети датчиков качества воздуха.</li>
+                <li><b>Базовый трафик:</b> экспертная оценка или синтетика. В интерфейсе это честно помечено как «демо-калибровка».</li>
+              </ul>
+            </section>
+
+            <section id="m-limits">
+              <h2>Ограничения</h2>
+              <ul class="list">
+                <li>Отопление учтено только как сезонный фон по доле частного сектора.</li>
+                <li>Нет метеомодели: ветра, осадков, суточного хода инверсии.</li>
+                <li>Разложение эффекта последовательное: порядок шагов меняет вклад каждого.</li>
+                <li>Все числа — демо-калибровка для показа логики, не прогноз.</li>
+              </ul>
+            </section>
+
+            <section id="m-team">
+              <h2>Команда</h2>
+              <ul class="team team--doc">
+                <li><b>Хранитель данных</b><span>геосетка Бишкека, GeoDataFrame</span></li>
+                <li><b>Мозги проекта</b><span>TwinBishkekSimulator, ML-модели, матрица факторов</span></li>
+                <li><b>Лицо проекта</b><span>интерфейс на Streamlit, карты, KPI и презентация</span></li>
+              </ul>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="small-screen" role="alert">
+  <svg class="brand__mark"><use href="#i-logo"/></svg>
+  <p><b>Twin Bishkek рассчитан на экран компьютера.</b><br>Откройте его на ноутбуке или мониторе от 1024 пикселей в ширину.</p>
+</div>
+<div class="selftest" id="selftest" hidden></div>
+
+<script src="js/data.js"></script>
+<script src="js/model.js"></script>
+<script src="js/backend.js"></script>
+<script src="js/map.js"></script>
+<script src="js/panorama.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/live.js"></script>
+<script src="js/roads.js"></script>
+<script src="js/trees.js"></script>
+<script src="js/plan.js"></script>
+<script src="js/explain.js"></script>
+<script src="js/selftest.js"></script>
+<script src="js/screens.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

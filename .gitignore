@@ -1,0 +1,20 @@
+/data/live/
+__pycache__/
+*.sqlite3*
+
+# окружение и кеши
+venv/
+.venv/
+cache/
+.pytest_cache/
+*.egg-info/
+
+# ключи (пример лежит в .env.example)
+.env
+
+# сырые данные большие и скачиваются заново: python -m twin_bishkek.data_download all
+/data/raw/
+
+# локальные настройки редактора и Claude
+.claude/
+.vscode/

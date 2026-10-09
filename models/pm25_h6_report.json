@@ -1,0 +1,51 @@
+{
+  "target": "pm25_ground",
+  "horizon_h": 6,
+  "n_train": 5107,
+  "n_test": 1277,
+  "test_period": [
+    "2026-07-05 20:00:00",
+    "2026-09-18 10:00:00"
+  ],
+  "model": {
+    "mae": 3.6501090790458806,
+    "rmse": 5.061282750511792,
+    "r2": 0.2278924129505019,
+    "aqi_category_acc": 0.8903680501174628
+  },
+  "persistence": {
+    "mae": 5.92682840797504,
+    "rmse": 7.7438868962237954,
+    "r2": -0.8074846696424143,
+    "aqi_category_acc": 0.8238057948316366
+  },
+  "features": [
+    "temperature_2m",
+    "relative_humidity_2m",
+    "pressure_msl",
+    "precipitation",
+    "wind_speed_10m",
+    "wind_direction_10m",
+    "cloud_cover",
+    "boundary_layer_height",
+    "wind_u",
+    "wind_v",
+    "dpressure_24h",
+    "dtemp_24h",
+    "hour_sin",
+    "hour_cos",
+    "month_sin",
+    "month_cos",
+    "dow",
+    "heating",
+    "pm_now",
+    "pm_lag1",
+    "pm_lag3",
+    "pm_lag6",
+    "pm_lag12",
+    "pm_lag24",
+    "pm_lag48",
+    "pm_mean24",
+    "pm_mean72"
+  ]
+}
