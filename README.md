@@ -9,7 +9,7 @@
 
 ## Ссылки
 
-- Сайт (с картой 2GIS): [ссылка появится после деплоя на Render]
+- Сайт (с картой 2GIS): https://twin-bishkek.onrender.com (бесплатный тариф: первое открытие после простоя — около минуты)
 - Презентация: https://claude.ai/artifact/2KwKqiosoe73CHcUqBYnqK
 
 ## Деплой (Render, бесплатно)
