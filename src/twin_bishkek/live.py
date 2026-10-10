@@ -42,6 +42,11 @@ MULT_RANGE = (0.75, 1.25)  # поправка не может менять на�
 ROOT = Path(os.environ.get("TB_ROOT", Path(__file__).resolve().parents[2]))
 
 
+def seed_path() -> Path:
+    """Архив замеров, который лежит в репозитории: на сервере с чистым диском (Render) он подмешивается при старте."""
+    return Path(os.environ.get("TB_LIVE_SEED", ROOT / "data" / "seed" / "live_seed.json"))
+
+
 def default_db_path() -> Path:
     return Path(os.environ.get("TB_LIVE_DB", ROOT / "data" / "live" / "twin_live.sqlite3"))
 
@@ -159,6 +164,39 @@ class LiveStore:
         got = {r["hour"]: dict(r) for r in rows}
         return [dict(hour=h, n=got[h]["n"], days=got[h]["days"], score=got[h]["score"], model_delay=got[h]["model_delay"])
                 if h in got else dict(hour=h, n=0, days=0, score=None, model_delay=None) for h in range(24)]
+
+    # ---- перенос архива замеров (например, с ноутбука на сервер Render, где диск чистится при перезапуске)
+    _TRAFFIC_COLS = ("observed_at", "day_type", "hour", "season", "score", "center_lon", "center_lat", "zoom",
+                     "view_key", "model_delay", "model_speed", "source")
+    _ENV_COLS = ("captured_at", "air_time", "weather_time", "pm2_5", "pm10", "no2", "us_aqi", "temperature",
+                 "humidity", "wind_speed", "wind_dir", "payload_json")
+
+    def export_seed(self, out: str | Path) -> Path:
+        """Весь архив замеров в JSON: его можно положить в репозиторий и подхватить на другом сервере."""
+        with self._lock, self._db() as c:
+            t = [dict(r) for r in c.execute(f"SELECT {','.join(self._TRAFFIC_COLS)} FROM traffic_observations ORDER BY id")]
+            e = [dict(r) for r in c.execute(f"SELECT {','.join(self._ENV_COLS)} FROM environment_snapshots ORDER BY id")]
+        out = Path(out)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps(dict(traffic=t, environment=e), ensure_ascii=False, indent=0), encoding="utf-8")
+        return out
+
+    def import_seed(self, path: str | Path) -> dict:
+        """Подмешать архив из export_seed. Повторы не дублируются (тот же момент и тот же вид карты / тот же снимок)."""
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+        added = dict(traffic=0, environment=0)
+        with self._lock, self._db() as c:
+            for r in data.get("traffic", []):
+                if c.execute("SELECT 1 FROM traffic_observations WHERE observed_at=? AND view_key=?", (r["observed_at"], r["view_key"])).fetchone():
+                    continue
+                c.execute(f"INSERT INTO traffic_observations({','.join(self._TRAFFIC_COLS)}) VALUES({','.join('?' * len(self._TRAFFIC_COLS))})",
+                          tuple(r.get(k) for k in self._TRAFFIC_COLS))
+                added["traffic"] += 1
+            for r in data.get("environment", []):
+                cur = c.execute(f"INSERT OR IGNORE INTO environment_snapshots({','.join(self._ENV_COLS)}) VALUES({','.join('?' * len(self._ENV_COLS))})",
+                                tuple(r.get(k) for k in self._ENV_COLS))
+                added["environment"] += cur.rowcount
+        return added
 
     def export_hourly_csv(self, out: str | Path) -> Path:
         """Почасовая таблица (воздух + погода + балл 2GIS) в формате, который можно подмешать к hourly.csv для ml.py."""
@@ -281,9 +319,11 @@ class Collector:
             return False
 
     def _loop(self) -> None:
+        fails = 0
         while not self._stop.is_set():
-            self.tick()
-            self._stop.wait(self.interval)
+            fails = 0 if self.tick() or self.last_error is None else fails + 1
+            # после ошибки (например, 429 «слишком много запросов» с общего IP хостинга) пробуем раньше: 2, 4, 8… мин, не реже interval
+            self._stop.wait(self.interval if fails == 0 else min(self.interval, 120 * 2 ** (fails - 1)))
 
     def start(self) -> None:
         if self._thread and self._thread.is_alive():
@@ -310,7 +350,7 @@ def main() -> None:
     import argparse
 
     ap = argparse.ArgumentParser(description="Живые данные Twin Bishkek")
-    ap.add_argument("cmd", choices=["status", "export", "learn", "collect-once"])
+    ap.add_argument("cmd", choices=["status", "export", "learn", "collect-once", "seed"])
     ap.add_argument("--out", default=str(ROOT / "data" / "processed" / "live_hourly.csv"))
     a = ap.parse_args()
     st = get_store()
@@ -318,6 +358,8 @@ def main() -> None:
         print(json.dumps(st.status(), ensure_ascii=False, indent=2))
     elif a.cmd == "export":
         print("записано:", st.export_hourly_csv(a.out))
+    elif a.cmd == "seed":  # архив замеров в репозиторий: сервер подхватит его при старте (seed_path())
+        print("записано:", st.export_seed(seed_path()), st.status())
     elif a.cmd == "collect-once":
         print("новый снимок" if Collector(st).tick() else "нового снимка нет (или ошибка сети)")
     else:

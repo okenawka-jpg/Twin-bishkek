@@ -100,6 +100,12 @@ async def _lifespan(_: FastAPI):
     """Запуск: строим сетку, калибруем, включаем фоновый сбор. Остановка: выключаем сбор."""
     global _COLLECTOR
     get_simulator()  # строим сетку и калибруем один раз
+    seed = live.seed_path()
+    if seed.exists():  # архив замеров из репозитория: на Render диск чистый после каждого перезапуска
+        try:
+            live.get_store().import_seed(seed)
+        except Exception as e:  # noqa: BLE001 — битый архив не должен ронять сервер
+            live.LOG.warning("архив замеров не подмешан: %s", e)
     if os.environ.get("TB_COLLECT", "1") != "0":  # TB_COLLECT=0 выключает фоновый сбор (тесты, офлайн)
         _COLLECTOR = live.Collector(live.get_store())
         _COLLECTOR.start()

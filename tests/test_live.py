@@ -133,6 +133,17 @@ def test_tmul_changes_only_the_chosen_hour():
     assert sim.simulate({"hour": 18, "tmul": [1.0, 2.0]}).city["delay"] == base  # кривая длина игнорируется
 
 
+def test_seed_round_trip_without_duplicates(tmp_path):
+    a = store(tmp_path)
+    a.add_traffic(5.0, **CITY, now=at(5, 8))
+    a.save_environment(dict(air=dict(time="t1", pm2_5=10), weather=dict(time="w1")))
+    seed = a.export_seed(tmp_path / "seed.json")
+    b = live.LiveStore(tmp_path / "b.sqlite3")
+    assert b.import_seed(seed) == dict(traffic=1, environment=1)
+    assert b.import_seed(seed) == dict(traffic=0, environment=0)  # повторный старт сервера не дублирует
+    assert b.status()["traffic_observations"] == 1 and b.status()["environment_snapshots"] == 1
+
+
 def test_export_csv_joins_air_and_traffic(tmp_path):
     s = store(tmp_path)
     s.save_environment(dict(air=dict(time="2026-10-05T08:00", pm2_5=20.0), weather=dict(time="2026-10-05T08:00", temperature_2m=9.0)))
