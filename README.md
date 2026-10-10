@@ -1,6 +1,6 @@
 # Twin Bishkek — «Горы видно?»
 
-### 👉 [Открыть сайт](https://twin-bishkek.onrender.com) · [Для менторов](https://twin-bishkek.onrender.com/mentors.html) · [Презентация](https://claude.ai/artifact/2KwKqiosoe73CHcUqBYnqK)
+### 👉 [Открыть сайт](https://twin-bishkek.onrender.com) · [Для менторов](https://twin-bishkek.onrender.com/mentors.html) · [Презентация](https://twin-bishkek.onrender.com/presentation.html) · [PDF](https://twin-bishkek.onrender.com/presentation.pdf)
 
 Цифровой двойник Бишкека. Показывает, что будет с пробками, воздухом (PM2.5, AQI) и районами,
 если принять городское решение: изменить автопарк, долю электромобилей, зелень, построить ЖК или ТЦ,
@@ -12,7 +12,7 @@
 ## Ссылки
 
 - Сайт (с картой 2GIS): https://twin-bishkek.onrender.com (бесплатный тариф: первое открытие после простоя — около минуты)
-- Презентация: https://claude.ai/artifact/2KwKqiosoe73CHcUqBYnqK
+- Презентация: https://twin-bishkek.onrender.com/presentation.html (PDF: https://twin-bishkek.onrender.com/presentation.pdf)
 
 ## Деплой (Render, бесплатно)
 

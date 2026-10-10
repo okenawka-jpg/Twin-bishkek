@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Bishkek — презентация</title>
+<style>
+  /* шрифты лежат на сайте (Google Fonts, лицензия OFL): презентация и PDF не зависят от внешних серверов */
+  @font-face { font-family: 'Unbounded'; font-weight: 400 800; font-display: block; src: url(fonts/unbounded-cyrillic.woff2) format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: 'Unbounded'; font-weight: 400 800; font-display: block; src: url(fonts/unbounded-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Manrope'; font-weight: 400 800; font-display: block; src: url(fonts/manrope-cyrillic.woff2) format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: 'Manrope'; font-weight: 400 800; font-display: block; src: url(fonts/manrope-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  html, body { margin: 0; height: 100%; background: #0A121D; overflow: hidden; }
+  .stage { position: fixed; inset: 0; }
+  .deck { width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%; transform-origin: center center; }
+  .deck > section { position: absolute; inset: 0; width: 1920px; height: 1080px; box-sizing: border-box; overflow: hidden; visibility: hidden; }
+  .deck > section.on { visibility: visible; }
+  .deck section * { margin: 0; box-sizing: border-box; }
+  .deck section ul { padding-left: 1.2em; }
+  .deck section table { width: 100%; border-collapse: collapse; }
+  .deck section th, .deck section td { padding: .35em .6em; border-bottom: 1px solid rgba(128,140,160,.35); }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; gap: 14px; padding: 10px; font: 14px/1 Manrope, Arial, sans-serif; color: #B8C4D6; opacity: .0; transition: opacity .2s; }
+  body:hover .bar { opacity: .9; }
+  .bar button { font: inherit; color: #F4F1EA; background: #18283F; border: 1px solid #2A3A55; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+  .bar a { color: #E8A33D; }
+  @page { size: 1920px 1080px; margin: 0; }
+  @media print {
+    html, body { overflow: visible; height: auto; background: none; }
+    .stage { position: static; display: block; }
+    .deck { transform: none !important; position: static; width: auto; height: auto; }
+    .deck > section { position: relative; visibility: visible; break-after: page; page-break-after: always; }
+    .bar { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="stage"><div class="deck" id="deck">
+<section id="cover" data-transition="fade" style="background:#0F1B2D;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-start;gap:36px">
+<svg aria-label="Силуэт гор Ала-Тоо в янтарной дымке смога" style="position:absolute;left:0;top:560px;width:1920px;height:520px" width="1920" height="520" viewBox="0 0 1920 520"><defs><linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8A33D" stop-opacity="0"/><stop offset="0.55" stop-color="#E8A33D" stop-opacity="0.22"/><stop offset="1" stop-color="#E8A33D" stop-opacity="0.05"/></linearGradient></defs><path d="M0 520 L0 300 L160 210 L300 260 L470 120 L620 230 L760 150 L900 250 L1040 90 L1200 220 L1340 140 L1500 240 L1660 130 L1800 210 L1920 170 L1920 520 Z" fill="#2A3A55"/><path d="M430 160 L470 120 L515 165 L492 156 L470 176 L452 158 Z" fill="#DCE6F0"/><path d="M1000 130 L1040 90 L1088 136 L1064 128 L1040 150 L1020 132 Z" fill="#DCE6F0"/><path d="M1300 178 L1340 140 L1382 182 L1360 175 L1340 192 L1320 178 Z" fill="#DCE6F0"/><path d="M1620 168 L1660 130 L1705 172 L1682 165 L1660 184 L1640 168 Z" fill="#DCE6F0"/><path d="M720 186 L760 150 L800 190 L780 182 L760 198 L740 184 Z" fill="#DCE6F0"/><rect x="0" y="120" width="1920" height="400" fill="url(#haze)"/><path d="M0 520 L0 400 L200 330 L380 390 L560 300 L760 380 L960 320 L1180 400 L1400 330 L1620 390 L1800 340 L1920 370 L1920 520 Z" fill="#16243A"/></svg>
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E8A33D">Twin Bishkek · цифровой двойник города</p>
+<h1 style="font-family:'Unbounded', Arial, sans-serif;font-size:120px;font-weight:700;line-height:1.05;color:#F4F1EA">Горы видно?</h1>
+<p style="font-size:44px;line-height:1.3;color:#DCE6F0;width:1300px">Меняешь городское решение — и сразу видишь, что станет с пробками, воздухом и твоим районом.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#B8C4D6">[Название команды] · [Имена участников] · [Хакатон, дата]</p>
+
+</section>
+<section id="problem" data-transition="fade" style="background:#F4F1EA;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A85A12">Проблема</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15;color:#0F1B2D">Зимой Бишкек тонет в смоге, а город принимает решения вслепую</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:24px;padding:40px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1;color:#1F7A70">14</p>
+<p style="font-size:32px;font-weight:700">мкг/м³ PM2.5 летом</p>
+<p style="font-size:24px;color:#4A5568">AQI 59 — «умеренно», горы видно</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#0F1B2D;border-radius:24px;padding:40px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1;color:#E8A33D">70</p>
+<p style="font-size:32px;font-weight:700;color:#F4F1EA">мкг/м³ PM2.5 зимой</p>
+<p style="font-size:24px;color:#B8C4D6">AQI 160 — «вредно», в 5 раз грязнее лета</p>
+</div>
+<div style="flex:1.2;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:8px 0 8px 16px">
+<p style="font-size:32px;line-height:1.35;font-weight:700">Новый ЖК, дорога, вырубка или квота на машины меняют пробки и воздух.</p>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">Но увидеть последствия заранее сейчас негде: решения принимают на глаз.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#4A5568">02 · Наземные датчики OpenAQ: 93 датчика, ~192 тыс. часовых значений</p>
+
+</section>
+<section id="cascade" data-transition="fade" style="background:#0F1B2D;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E8A33D">Идея</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Одна цепочка от решения до твоего района</h2>
+<div style="display:flex;align-items:center;gap:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#E8A33D;border-radius:20px;padding:32px 24px">
+<p style="font-size:32px;font-weight:800;color:#0F1B2D">Решение</p>
+<p style="font-size:24px;line-height:1.35;color:#0F1B2D">машины, стройка, дорога, деревья</p>
+</div>
+<svg width="56" height="28" viewBox="0 0 56 28" aria-hidden="true" style="flex:none"><path d="M0 9h34V0l22 14-22 14v-9H0z" fill="#B8C4D6"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#18283F;border:1px solid #2A3A55;border-radius:20px;padding:32px 24px">
+<p style="font-size:32px;font-weight:800">Трафик</p>
+<p style="font-size:24px;line-height:1.35;color:#B8C4D6">919 участков улиц из OSM</p>
+</div>
+<svg width="56" height="28" viewBox="0 0 56 28" aria-hidden="true" style="flex:none"><path d="M0 9h34V0l22 14-22 14v-9H0z" fill="#B8C4D6"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#18283F;border:1px solid #2A3A55;border-radius:20px;padding:32px 24px">
+<p style="font-size:32px;font-weight:800">PM2.5</p>
+<p style="font-size:24px;line-height:1.35;color:#B8C4D6">выхлоп и отопление по сотам</p>
+</div>
+<svg width="56" height="28" viewBox="0 0 56 28" aria-hidden="true" style="flex:none"><path d="M0 9h34V0l22 14-22 14v-9H0z" fill="#B8C4D6"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#18283F;border:1px solid #2A3A55;border-radius:20px;padding:32px 24px">
+<p style="font-size:32px;font-weight:800">AQI</p>
+<p style="font-size:24px;line-height:1.35;color:#B8C4D6">шкала EPA, видно ли горы</p>
+</div>
+<svg width="56" height="28" viewBox="0 0 56 28" aria-hidden="true" style="flex:none"><path d="M0 9h34V0l22 14-22 14v-9H0z" fill="#B8C4D6"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#3FB6A8;border-radius:20px;padding:32px 24px">
+<p style="font-size:32px;font-weight:800;color:#0F1B2D">Район</p>
+<p style="font-size:24px;line-height:1.35;color:#0F1B2D">комфорт, школы, зелень</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#DCE6F0;width:1500px">Сценарий считается за миллисекунды — двигаешь ползунок, и карта из 473 сот, панорама гор и текстовый разбор меняются сразу.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#B8C4D6">03 · Twin Bishkek</p>
+
+</section>
+<section id="levers" data-transition="fade" style="background:#F4F1EA;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A85A12">Что можно поменять</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Любое решение города — и его последствия</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:32px">
+<p style="font-size:24px;font-weight:800;color:#A85A12">01</p>
+<p style="font-size:32px;font-weight:800">Машины</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">рост автопарка, доля электромобилей</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:32px">
+<p style="font-size:24px;font-weight:800;color:#A85A12">02</p>
+<p style="font-size:32px;font-weight:800">Застройка</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">ЖК, ТЦ, парк: во время стройки и после, парковки по СН КР</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:32px">
+<p style="font-size:24px;font-weight:800;color:#A85A12">03</p>
+<p style="font-size:32px;font-weight:800">Новая дорога</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">тоннель, эстакада или обычная — кликами по карте или словами</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:32px">
+<p style="font-size:24px;font-weight:800;color:#A85A12">04</p>
+<p style="font-size:32px;font-weight:800">Деревья</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">9 пород, количество, сколько лет прошло после посадки</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:32px">
+<p style="font-size:24px;font-weight:800;color:#A85A12">05</p>
+<p style="font-size:32px;font-weight:800">События</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">матч на «Бишкек Арене», ремонт моста, перекрытие улицы</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#0F1B2D;border-radius:20px;padding:32px">
+<p style="font-size:24px;font-weight:800;color:#E8A33D">06</p>
+<p style="font-size:32px;font-weight:800;color:#F4F1EA">Время</p>
+<p style="font-size:24px;line-height:1.35;color:#B8C4D6">час суток, сезон и план работ по месяцам</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#4A5568">04 · Всё это — в одном экране «Симулятор»</p>
+
+</section>
+<section id="insight" data-transition="fade" style="background:#0F1B2D;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E8A33D">Находка модели · зима</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Пробки и смог пикуют в разное время</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#18283F;border:1px solid #2A3A55;border-radius:24px;padding:40px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1;color:#F4F1EA">18:00</p>
+<p style="font-size:32px;font-weight:700">пик пробок</p>
+<p style="font-size:28px;line-height:1.35;color:#B8C4D6">задержка в пути ~19 мин, центр красный</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#18283F;border:2px solid #E8A33D;border-radius:24px;padding:40px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1;color:#E8A33D">22:00</p>
+<p style="font-size:32px;font-weight:700">пик смога</p>
+<p style="font-size:28px;line-height:1.35;color:#B8C4D6">AQI 179 против 146 днём в 15:00 — а пробок уже нет</p>
+</div>
+</div>
+<p style="font-size:36px;line-height:1.35;font-weight:700;color:#F4F1EA;width:1600px">Зимний смог — это прежде всего отопление и ночная инверсия. Одними мерами по машинам горы не вернуть.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#B8C4D6">05 · Ритм воздуха — реальные почасовые данные OpenAQ; ритм трафика — допущение</p>
+
+</section>
+<section id="build" data-transition="fade" style="background:#F4F1EA;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A85A12">Сценарий · три ЖК в Джале</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Стройка и жизнь после неё — это два разных города</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;border-top:8px solid #E8A33D;border-radius:20px;padding:40px">
+<p style="font-size:32px;font-weight:800">Во время стройки</p>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">Техника, сужение проезда, пыль. Жителей ещё нет.</p>
+<p style="font-size:28px;line-height:1.4"><b>Задержка в Джале:</b> 7,5 → 10,3 мин</p>
+<p style="font-size:28px;line-height:1.4"><b>AQI района:</b> 62 → 67</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;border-top:8px solid #1F7A70;border-radius:20px;padding:40px">
+<p style="font-size:32px;font-weight:800">После заселения</p>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">≈12 тыс. новых жителей и их машины.</p>
+<p style="font-size:28px;line-height:1.4"><b>Задержка в Джале:</b> 12,3 мин</p>
+<p style="font-size:28px;line-height:1.4"><b>Школы:</b> 98% → 110% · <b>комфорт:</b> 78 → 70</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#4A5568;width:1600px">На сайте — переключатель «Во время стройки / После окончания» и план работ по месяцам. Нормы парковок — из СН КР 30-01:2020.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#4A5568">06 · Коэффициенты стройки — допущения модели</p>
+
+</section>
+<section id="road" data-transition="fade" style="background:#0F1B2D;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E8A33D">Сценарий · новая дорога запад — восток через центр</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Тоннель, эстакада или обычная дорога?</h2>
+<table style="font-size:32px;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif">
+<tr><th style="width:28%;text-align:left;color:#B8C4D6">Тип</th><th style="width:24%;text-align:right;color:#B8C4D6">Пока строят</th><th style="width:24%;text-align:right;color:#B8C4D6">После открытия</th><th style="width:24%;text-align:right;color:#B8C4D6">Воздух, AQI</th></tr>
+<tr style="background:#18283F"><td style="text-align:left"><b>Тоннель</b></td><td style="text-align:right">+0,9 мин</td><td style="text-align:right;color:#3FB6A8">−1,8 мин</td><td style="text-align:right;color:#3FB6A8">−0,4</td></tr>
+<tr><td style="text-align:left"><b>Эстакада</b></td><td style="text-align:right">+2,3 мин</td><td style="text-align:right;color:#3FB6A8">−1,8 мин</td><td style="text-align:right;color:#E8A33D">+0,5</td></tr>
+<tr><td style="text-align:left"><b>Обычная</b></td><td style="text-align:right;color:#E8A33D">+3,2 мин</td><td style="text-align:right;color:#3FB6A8">−1,1 мин</td><td style="text-align:right;color:#E8A33D">+0,7</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.4;color:#DCE6F0;width:1600px">В час пик 18:00 тоннель экономит <b>3,7 мин</b> на каждую поездку. Трассу рисуют кликами по карте или пишут словами: «тоннель от Джала до Учкуна через центр».</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#B8C4D6">07 · Задержка — средняя по городу, лето; коэффициенты дорог — допущения модели</p>
+
+</section>
+<section id="trees" data-transition="fade" style="background:#F4F1EA;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A85A12">Сценарий · 2000 платанов вдоль проспекта Чуй</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Деревья: польза растёт годами</h2>
+<table style="font-size:32px;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif">
+<tr><th style="width:25%;text-align:left;color:#4A5568">Через</th><th style="width:20%;text-align:right;color:#4A5568">Крона</th><th style="width:30%;text-align:right;color:#4A5568">Тень</th><th style="width:25%;text-align:right;color:#4A5568">CO₂ в год</th></tr>
+<tr><td style="text-align:left">посадили</td><td style="text-align:right">1,5 м</td><td style="text-align:right">3,5 тыс. м²</td><td style="text-align:right">3,6 т</td></tr>
+<tr><td style="text-align:left">5 лет</td><td style="text-align:right">7,1 м</td><td style="text-align:right">80 тыс. м²</td><td style="text-align:right">82 т</td></tr>
+<tr style="background:#E6EFE9"><td style="text-align:left"><b>15 лет</b></td><td style="text-align:right"><b>13,3 м</b></td><td style="text-align:right"><b>277 тыс. м²</b></td><td style="text-align:right"><b>285 т</b></td></tr>
+</table>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:28px;font-weight:800">Честный вывод</p>
+<p style="font-size:24px;line-height:1.4;color:#4A5568">AQI деревья почти не меняют — так говорят и исследования. Их сила — тень, прохлада, зелень на жителя и CO₂.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:28px;font-weight:800">Цена молодости</p>
+<p style="font-size:24px;line-height:1.4;color:#4A5568">~20 рейсов водовоза в неделю летом; утром у трассы местами заторы — модель их показывает.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#4A5568">08 · CO₂ и пыль на м² кроны — Nowak 2013; прохлада — WRI; рост крон пород — допущение</p>
+
+</section>
+<section id="explain" data-transition="fade" style="background:#0F1B2D;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E8A33D">Разбор от модели</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Модель объясняет словами и предлагает, как исправить</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1.3;display:flex;flex-direction:column;gap:16px;background:#18283F;border-left:6px solid #E8A33D;border-radius:0 20px 20px 0;padding:36px">
+<p style="font-size:24px;font-weight:800;color:#E8A33D">СЕЙЧАС · стройка обычной дороги</p>
+<p style="font-size:26px;line-height:1.45;color:#DCE6F0">«Вдоль трассы перекопано и сужено. Для города: задержка +2,5 мин; сильнее всего задет Аламедин-1 (+4,7 мин).»</p>
+<p style="font-size:24px;font-weight:800;color:#3FB6A8">ПОСЛЕ открытия</p>
+<p style="font-size:26px;line-height:1.45;color:#DCE6F0">«Задержка −1,2 мин к сегодняшнему, дорога загружена на 88%.»</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#F4F1EA;border-radius:20px;padding:36px">
+<p style="font-size:24px;font-weight:800;color:#A85A12">ЧТО МОЖНО СДЕЛАТЬ</p>
+<p style="font-size:30px;line-height:1.3;font-weight:800;color:#0F1B2D">Сделать дорогу тоннелем</p>
+<p style="font-size:26px;line-height:1.4;color:#1F7A70"><b>Проверено моделью:</b> задержка −1,7 мин</p>
+<p style="font-size:24px;font-weight:700;color:#F4F1EA;background:#1F7A70;border-radius:12px;padding:10px 20px;align-self:flex-start">Применить</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#B8C4D6;width:1600px">Каждый совет сначала прогоняется через модель: показываем только то, что реально помогает. Без выдумок — одинаково при каждом запуске.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#B8C4D6">09 · Тексты собираются по правилам из чисел модели</p>
+
+</section>
+<section id="data" data-transition="fade" style="background:#F4F1EA;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A85A12">Данные</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Настоящий город и настоящие датчики</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:28px">
+<p style="font-size:28px;font-weight:800">OpenAQ</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">93 датчика, ~192 тыс. часовых значений: калибровка лета и зимы</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:28px">
+<p style="font-size:28px;font-weight:800">OpenStreetMap</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">919 участков улиц с полосами, реки, мосты, 13 районов</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:28px">
+<p style="font-size:28px;font-weight:800">2GIS MapGL</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">живые пробки рядом с моделью, сверка суточного ритма</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:28px">
+<p style="font-size:28px;font-weight:800">Open-Meteo</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">погода; модель CAMS отвергли — зимой 20 вместо 83 мкг/м³</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:28px">
+<p style="font-size:28px;font-weight:800">СН КР 30-01:2020</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">нормы парковок для ЖК, ТЦ и развлечений</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DDD2;border-radius:20px;padding:28px">
+<p style="font-size:28px;font-weight:800">Nowak 2013, WRI</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">пыль, CO₂ и прохлада от крон деревьев</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#4A5568">10 · © участники OpenStreetMap (ODbL) · Данные Нацстаткома КР · OpenAQ · Open-Meteo</p>
+
+</section>
+<section id="trust" data-transition="fade" style="background:#E8A33D;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#0F1B2D">Проверка</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Модели можно верить — мы её проверяем</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1">82</p>
+<p style="font-size:28px;line-height:1.35">автотеста на здравый смысл: EV не убирает пробки, стройка хуже, тоннель чище</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1">16/16</p>
+<p style="font-size:28px;line-height:1.35">самопроверок прямо в браузере</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1">10⁻¹³</p>
+<p style="font-size:28px;line-height:1.35">расхождение расчёта в браузере и на Python</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1">~16</p>
+<p style="font-size:28px;line-height:1.35">мс на сценарий — работает даже без интернета</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#0F1B2D">11 · pytest + самопроверка ?selftest; калибровка: лето 14, зима 70 мкг/м³</p>
+
+</section>
+<section id="next" data-transition="fade" style="background:#F4F1EA;color:#0F1B2D;font-family:'Manrope', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A85A12">Честно</p>
+<h2 style="font-family:'Unbounded', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Что пока допущение — и что дальше</h2>
+<div style="display:flex;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:32px;font-weight:800">Ограничения</p>
+<ul style="font-size:28px;line-height:1.4;color:#4A5568">
+<li>Пробки — расчёт модели, не замеры по каждой улице</li>
+<li>Население районов, доля электромобилей, силы эффектов — допущения</li>
+<li>Новые дороги — упрощённая схема без полного распределения поездок</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:32px;font-weight:800;color:#1F7A70">Дальше</p>
+<ul style="font-size:28px;line-height:1.4;color:#4A5568">
+<li>2GIS: API живых пробок уже подключён, дальше — данные по каждой улице</li>
+<li>Прогноз смога на сутки на сайте и модуль отопления на угле</li>
+<li>Общественный транспорт, ИИ-ассистент и пилот с мэрией</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#4A5568">12 · Все допущения подписаны в интерфейсе и в docs/ИСТОЧНИКИ_И_ОГРАНИЧЕНИЯ.md</p>
+
+</section>
+<section id="close" data-transition="fade" style="background:#0F1B2D;color:#F4F1EA;font-family:'Manrope', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-start;gap:36px">
+<svg aria-label="Силуэт гор Ала-Тоо под чистым небом" style="position:absolute;left:0;top:560px;width:1920px;height:520px" width="1920" height="520" viewBox="0 0 1920 520"><path d="M0 520 L0 300 L160 210 L300 260 L470 120 L620 230 L760 150 L900 250 L1040 90 L1200 220 L1340 140 L1500 240 L1660 130 L1800 210 L1920 170 L1920 520 Z" fill="#3A5478"/><path d="M430 160 L470 120 L515 165 L492 156 L470 176 L452 158 Z" fill="#F4F1EA"/><path d="M1000 130 L1040 90 L1088 136 L1064 128 L1040 150 L1020 132 Z" fill="#F4F1EA"/><path d="M1300 178 L1340 140 L1382 182 L1360 175 L1340 192 L1320 178 Z" fill="#F4F1EA"/><path d="M1620 168 L1660 130 L1705 172 L1682 165 L1660 184 L1640 168 Z" fill="#F4F1EA"/><path d="M720 186 L760 150 L800 190 L780 182 L760 198 L740 184 Z" fill="#F4F1EA"/><path d="M0 520 L0 400 L200 330 L380 390 L560 300 L760 380 L960 320 L1180 400 L1400 330 L1620 390 L1800 340 L1920 370 L1920 520 Z" fill="#1F7A70"/></svg>
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#3FB6A8">Twin Bishkek</p>
+<h1 style="font-family:'Unbounded', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1.1;width:1500px">Горы видно? Теперь это можно проверить до решения.</h1>
+<p style="font-size:44px;color:#DCE6F0">Спасибо! Готовы показать любой ваш сценарий вживую.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#DCE6F0">Демо: twin-bishkek.onrender.com · Код: github.com/okenawka-jpg/Twin-bishkek</p>
+
+</section>
+</div></div>
+<div class="bar"><button id="prev" aria-label="Назад">←</button><span id="num"></span><button id="next" aria-label="Вперёд">→</button><button id="fs">На весь экран</button><a href="presentation.pdf">PDF</a><a href="./">Сайт</a></div>
+<script>
+  const S = [...document.querySelectorAll('#deck > section')];
+  let i = Math.max(0, Math.min(S.length - 1, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+  const fit = () => { const k = Math.min(innerWidth / 1920, innerHeight / 1080); document.getElementById('deck').style.transform = 'translate(-50%, -50%) scale(' + k + ')'; };
+  const show = (n) => { i = Math.max(0, Math.min(S.length - 1, n)); S.forEach((s, j) => s.classList.toggle('on', j === i)); document.getElementById('num').textContent = (i + 1) + ' / ' + S.length; history.replaceState(null, '', '#' + (i + 1)); };
+  addEventListener('resize', fit);
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(S.length - 1);
+    if (e.key === 'f') document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+  });
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('next').onclick = () => show(i + 1);
+  document.getElementById('fs').onclick = () => document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+  document.querySelector('.stage').addEventListener('click', (e) => { if (e.clientX > innerWidth / 2) show(i + 1); else show(i - 1); });
+  fit(); show(i);
+</script>
+</body>
+</html>
